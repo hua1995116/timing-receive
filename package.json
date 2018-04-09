@@ -1,0 +1,26 @@
+{
+  "name": "timing-receive",
+  "version": "1.0.0",
+  "description": "timing-receive",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hua1995116/timing-receive.git"
+  },
+  "keywords": [
+    "timing",
+    "node"
+  ],
+  "author": "huayifeng <qiufenghyf@163.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hua1995116/timing-receive/issues"
+  },
+  "homepage": "https://github.com/hua1995116/timing-receive#readme",
+  "devDependencies": {
+    "express": "^4.16.3"
+  }
+}
