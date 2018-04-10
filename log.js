@@ -1,7 +1,7 @@
 //日志记录
 
 var log4js = require('log4js')
-var config = require('../config')
+// var config = require('../config')
 
 log4js.addLayout('json', function(config) {
   return function(logEvent) {
@@ -16,12 +16,7 @@ log4js.configure({
       layout: { type: 'json' },
       pattern: '_yyyy-MM-dd',
       keepFileExt: true,
-      filename: `${config.logFolder}/application.log`
-    },
-    server: {
-      type: 'multiprocess',
-      mode: 'master',
-      appender: 'error'
+      filename: `log/application.log`
     }
   },
   categories: {

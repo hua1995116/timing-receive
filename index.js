@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
+const logger = require('./log');
+
 router.get('/', function (req, res, next) {
   req.url = './index.html';
   next();
@@ -20,6 +22,10 @@ app.get('/getInfo', function(req, res) {
   console.log(req.url);
   let user_ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   console.log(user_ip);
+  logger.error({
+    a: 1,
+    b: 1
+  })
   res.json();
 })
 
