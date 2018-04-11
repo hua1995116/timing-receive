@@ -23,56 +23,46 @@ const connect = {
   error: function(query) {
     if(query.target === 'scriptError') {
       return {
-        target: query.target,
         msg: query.msg,
-        file: query.file,
         line: query.line,
         col: query.col,
         stack: query.stack,
-        page: query.page,
-        type: query.type,
-        system: query.system,
-        mobile: query.mobile,
-        ua: query.ua,
-        protocol: query.protocol,
-        network: query.network,
-        time: query.time
       }
     } else if(query.target === 'resourceError'){
       return {
-        target: query.target,
-        type: query.type,
-        file: query.file,
-        page: query.page,
         outerHTML: query.outerHTML,
         tagName: query.tagName,
         id: query.id,
         className: query.className,
         path: query.path,
         selector: query.selector,
-        system: query.system,
-        mobile: query.mobile,
-        ua: query.ua,
-        protocol: query.protocol,
-        network: query.network,
-        time: query.time
       }
     }
-    
   }
 }
 
 app.get('/getInfo', function(req, res) {
-  // console.log(req.url);
   if(!req.query.t) {
     res.json({
       msg: 'type丢失'
     });
   }
-  console.log(req.query.t);
+  // console.log(req.query.t);
+  const {target, type, file, page, system, mobile, ua, protocol, network, time} = req.query;
   const log = connect[req.query.t](req.query);
-  let user_ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  logger.error(extend(log, {ip: user_ip}));
+  let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  logger.error(extend(log, {
+    target,
+    type,
+    file,
+    page,
+    system,
+    mobile,
+    ua,
+    protocol,
+    network,
+    time
+  }));
   res.json({
     msg: '成功'
   });
