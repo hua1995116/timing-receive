@@ -14,8 +14,9 @@ log4js.configure({
     error: {
       type: 'dateFile',
       layout: { type: 'json' },
-      pattern: '_yyyy-MM-dd',
-      keepFileExt: true,
+      pattern: '.yyyy-MM-dd',
+      // keepFileExt: true,
+      compress: true,
       filename: `log/application.log`
     }
   },

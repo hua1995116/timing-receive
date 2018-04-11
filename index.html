@@ -6,18 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>测试</title>
+  <script>
+    (function(e){e._error_storage_=[];e.ERROR_CONFIG={client:"test",imgUrl:"http://127.0.0.1:7788/getInfo?t=error&"};function r(){e._error_storage_&&e._error_storage_.push([].slice.call(arguments))}e.addEventListener&&e.addEventListener("error",r,true);var t=3,n=function e(){var r=document.createElement("script");r.async=!0,r.src="./timing.js",r.crossOrigin="anonymous",r.onerror=function(){t--,t>0&&setTimeout(e,1500)},document.head&&document.head.appendChild(r)};setTimeout(n,1500)})(window);
+  </script>
 </head>
 
 <body>
+  213412
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-  axios.get('http://127.0.0.1:7788/getInfo', {
-    params: {
-      id: 12
-    }
-  }).then(function(res) {
-    console.log(res);
-  })
+  console.log(aa);
+  // axios.get('http://127.0.0.1:7788/getInfo?t=error', {
+  //   params: {
+  //     id: 12
+  //   }
+  // }).then(function(res) {
+  //   console.log(res);
+  // })
 </script>
 </body>
 
