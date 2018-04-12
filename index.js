@@ -48,7 +48,7 @@ app.get('/getInfo', function(req, res) {
     });
   }
   // console.log(req.query.t);
-  const {target, type, file, page, system, mobile, ua, protocol, network, time} = req.query;
+  const {target, type, file, page, system, mobile, ua, protocol, network, time, client} = req.query;
   const log = connect[req.query.t](req.query);
   let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   logger.error(extend(log, {
@@ -61,7 +61,8 @@ app.get('/getInfo', function(req, res) {
     ua,
     protocol,
     network,
-    time
+    createtime: time,
+    client,
   }));
   res.json({
     msg: '成功'
