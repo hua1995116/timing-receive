@@ -1,0 +1,5 @@
+bin\elasticsearch.bat  --elasticsearch 
+npm run start  --elasticsearch-head
+ .\filebeat.exe -e -c filebeat.yml -d "publish"  --filebeat
+ bin\logstash.bat -f first-pipeline.conf --config.reload.automatic --logstash
+bin\kibana.bat  --kibana
