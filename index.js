@@ -41,6 +41,22 @@ const connect = {
   }
 }
 
+app.get('/getPef', function(req, res) {
+  if(!req.query.t) {
+    res.json({
+      msg: 'type丢失'
+    });
+  }
+  logger.error({
+    type: req.query.t,
+    name: 'vla',
+    num: parseInt(100*Math.random())
+  });
+  res.json({
+    msg: '成功'
+  });
+})
+
 app.get('/getInfo', function(req, res) {
   if(!req.query.t) {
     res.json({

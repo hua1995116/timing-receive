@@ -6,26 +6,34 @@ esclient.search({
     index: 'logstash-*',
     body: {
         query: {
-            match: {
-                col: 15
+            // match: {
+            //     col: 15
+            // },
+            "constant_score": {
+                "filter" : {
+                  "range" : {
+                    "@timestamp" : {
+                      "gte" : 1523808000000,//或者"gt": "now-2m", "lt": "now"
+                      "lte" : 1523894400000
+                    }
+                  }
+                }
             }
         },
         size: 0,
         aggs: {
-            // return_col: {
-            //     sum: {
-            //         field: "offset"
-            //     }
-            // }
-            returntime: {
+            "returntime": {
                 "date_histogram": {
-                    "field": "createtime",
+                    "field": "@timestamp",
                     "interval": "hour",
                     "time_zone":"+08:00",
-                    "format": "yyyy-MM-dd HH:mm:ss",
-                }
-
+                    "format": "yyyy-MM-dd'T'HH:mm:ss",
+                },
+                // "aggs": {
+                //     "avg_line" : { "avg" : { "field" : "num" } }
+                // }
             }
+            
         }
     }
 }).then(function (response) {
